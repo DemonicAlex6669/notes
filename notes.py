@@ -12,7 +12,8 @@ def main():
         df2 = pandas.DataFrame(newline)
         df2.to_csv("notes.csv", index=false, mode="a", headers=false)
     elif choice == "search":
-        print(df.loc[choice in df["tags"]])
+        item = input("search")
+        print(df.loc[item in df["tags"]])
     elif choice == "tags":
         print(df.loc[:, "tags"])
     elif choice == "options":
