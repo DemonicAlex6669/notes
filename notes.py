@@ -1,21 +1,27 @@
-import pandas as pd
+import csv
 
 
 def main():
-    df = pd.read_csv("notes.csv")
-    choice = input("what do you want to do").strip().lower()
+    ...
     if choice == "write":
         title = input("title:")
         note = input("note:")
         tags = input("tags")
-        newline = [[title, note, tag]]
-        df2 = pandas.DataFrame(newline)
-        df2.to_csv("notes.csv", index=false, mode="a", headers=false)
+        with open("notes.csv") as csvfile:
+            note = csv.writer(csvfile)
+            note.writerrow([title, note, tags])
     elif choice == "search":
         item = input("search")
-        print(df.loc[item in df["tags"]])
+        with open("notes.csv") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if item in row["tags"]:
+                    print(f"{row['title']}/n {row['note]} /n tags: {row['tags]}")
     elif choice == "tags":
-        print(df.loc[:, "tags"])
+        with open("notes.csv") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                print(row["tags"])
     elif choice == "options":
         print("write, search, tags, options")
     else:
