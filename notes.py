@@ -8,12 +8,12 @@ def main():
         title = input("title:")
         note = input("note:")
         tags = input("tags")
-        newline = [[title, note, tag]]
-        df2 = pandas.DataFrame(newline)
-        df2.to_csv("notes.csv", index=false, mode="a", headers=false)
+        newline = [[title, note, tags]]
+        df2 = pd.DataFrame(newline)
+        df2.to_csv("notes.csv", index=False, mode="a", header=False)
     elif choice == "search":
         item = input("search")
-        print(df.loc[item in df["tags"]])
+        print(df[df["tags"].isin([item])])
     elif choice == "tags":
         print(df.loc[:, "tags"])
     elif choice == "options":
