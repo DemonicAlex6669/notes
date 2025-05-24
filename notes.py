@@ -5,6 +5,10 @@ def main():
     df = pd.read_csv("notes.csv")
 
     def format(title: str, note: str, tags: str) -> "output string":
+        """format row from dataframe into stylized text
+
+        input is dataframe{i,0] [i,1] [i,2] where i is the row selected before input to format
+        output is a styleized string"""
         title_length: int = len(title)
         print(f"#" * title_length)
         print(f"# {title} #")
